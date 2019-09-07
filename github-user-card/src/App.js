@@ -5,8 +5,8 @@ import Followers from "./components/Followers";
 
 class App extends React.Component {
   state = {
-    followers: [],
-    myCard: []
+    myCard: [],
+    followers: []
   };
 
   componentDidMount = () => {
@@ -21,7 +21,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(follower => {
         console.log(follower);
-        this.setState({ follwers: follower });
+        this.setState({ followers: follower });
       })
       .catch(err => console.log(err));
   };
@@ -31,7 +31,10 @@ class App extends React.Component {
       <div className="App">
         <div className="container">
           <MyCard key={this.state.myCard.id} myCard={this.state.myCard} />
-          <Followers followers={this.state.followers} />
+          {this.state.followers.map(follower => (
+            <Followers followers={follower} />
+          ))}
+          {/* <Followers followers={this.state.followers} /> */}
         </div>
       </div>
     );

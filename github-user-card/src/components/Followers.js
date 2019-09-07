@@ -7,26 +7,37 @@ class Followers extends React.Component {
   }
 
   render() {
-    return "hi";
-    // <div>
-    //   {this.users.map(user => {
-    //     return <p>{user.name}</p>;
-    //   })}
-    // </div>
-    // <div className="cards">
-    //   <div className="card">
-    //     <img src={users.avatar_url} />
-    //     <div className="card-info">
-    //       <h3 className="name">{users.name}</h3>
-    //       <p className="usersname">{users.login}</p>
-    //       <p className="location">Location: {users.location}</p>
-    //       <a href={users.url}>Profile: {users.url}</a>
-    //       <p className="followers">Followers: {users.followers}</p>
-    //       <p className="following">Following: {users.following}</p>
-    //       <p className="bio">Bio: {users.bio}</p>
-    //     </div>
-    //   </div>
-    // </div>;
+    return (
+      // <div>
+      //   {this.this.props.followers.map(user => {
+      //     return <p>{user.name}</p>;
+      //   })}
+      // </div>
+      <div className="cards">
+        <div className="card">
+          <img src={this.props.followers.avatar_url} />
+          <div className="card-info">
+            <h3 className="name">{this.props.followers.name}</h3>
+            <p className="this.props.followersname">
+              {this.props.followers.login}
+            </p>
+            <p className="location">
+              Location: {this.props.followers.location}
+            </p>
+            <a href={this.props.followers.url}>
+              Profile: {this.props.followers.url}
+            </a>
+            <p className="followers">
+              Followers: {this.props.followers.followers}
+            </p>
+            <p className="following">
+              Following: {this.props.followers.following}
+            </p>
+            <p className="bio">Bio: {this.props.followers.bio}</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
