@@ -1,18 +1,27 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import User from "./components/User";
+import MyCard from "./components/User";
+import Followers from "./components/Followers";
 
 class App extends React.Component {
   state = {
-    users: []
+    followers: [],
+    myCard: []
   };
 
   componentDidMount = () => {
     fetch(`https://api.github.com/users/bdavis90`)
       .then(res => res.json())
-      .then(user => {
-        this.setState({ users: user });
+      .then(card => {
+        this.setState({ myCard: card });
+      })
+      .catch(err => console.log(err));
+
+    fetch(`https://api.github.com/users/bdavis90/followers`)
+      .then(res => res.json())
+      .then(follower => {
+        console.log(follower);
+        this.setState({ follwers: follower });
       })
       .catch(err => console.log(err));
   };
@@ -20,7 +29,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <User user={this.state.users} />
+        <div className="container">
+          <MyCard key={this.state.myCard.id} myCard={this.state.myCard} />
+          <Followers followers={this.state.followers} />
+        </div>
       </div>
     );
   }
